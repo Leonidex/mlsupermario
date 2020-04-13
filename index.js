@@ -1,8 +1,14 @@
+'use strict'
+
 document.onreadystatechange = function (event) {
     if (event.target.readyState !== "complete") {
         return;
     }
     
+    // Python ml library load
+    
+
+    // HTML Game load
     var timeStart = Date.now(),
         UserWrapper = new UserWrappr(FullScreenMario.prototype.proliferate({
             "GameStartrConstructor": FullScreenMario
