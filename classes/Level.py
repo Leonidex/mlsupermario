@@ -25,6 +25,7 @@ class Level:
             self.loadObjects(data)
             self.loadEntities(data)
             self.levelLength = data["length"]
+            self.max_X = data["max_x"]
 
     def loadEntities(self, data):
         try:

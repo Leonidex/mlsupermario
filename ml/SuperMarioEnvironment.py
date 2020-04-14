@@ -50,25 +50,22 @@ class SuperMarioEnv():
     
     metadata = {
         'render.modes': ['human', 'rgb_array'],
-        'video.frames_per_second' : 50
+        'video.frames_per_second' : 60
     }
 
     def __init__(self):
         self.action_space = spaces.Discrete(6)
 
-        # Angle at which to fail the episode
-        self.x_threshold = 2.4
-        self.y_threshold = 2.4
-
-        # Angle limit set to 2 * theta_threshold_radians so failing observation is still within bounds
+        # [x,x_vel,y,y_vel]
+        # First level max_X = 1888
         lowerBound = np.array([0,
-                         -10,
+                         -5.2,
                          0,
-                         -10], dtype=np.float32)
-        upperBound = np.array([1000,
-                         10,
-                         1000,
-                         10], dtype=np.float32)
+                         -20], dtype=np.float32)
+        upperBound = np.array([1888,
+                         5.2,
+                         384,
+                         24], dtype=np.float32)
         self.observation_space = spaces.Box(lowerBound, upperBound, dtype=np.float32)
         self.state = None
 
