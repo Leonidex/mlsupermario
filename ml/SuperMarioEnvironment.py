@@ -53,19 +53,23 @@ class SuperMarioEnv():
         'video.frames_per_second' : 60
     }
 
-    def __init__(self):
-        self.action_space = spaces.Discrete(6)
+    def __init__(self, maxFrames, levelMaxX):
+        self.action_space = spaces.Discrete(4)
 
-        # [x,x_vel,y,y_vel]
+        # observation space: [x,x_vel,y,y_vel,frame,closestEnemyDistance]
         # First level max_X = 1888
         lowerBound = np.array([0,
-                         -5.2,
+                         -40,
                          0,
-                         -20], dtype=np.float32)
-        upperBound = np.array([1888,
-                         5.2,
-                         384,
-                         24], dtype=np.float32)
+                         -40,
+                         0,
+                         -levelMaxX], dtype=np.float32)
+        upperBound = np.array([2000,
+                         40,
+                         1000,
+                         40,
+                         maxFrames,
+                         levelMaxX], dtype=np.float32)
         self.observation_space = spaces.Box(lowerBound, upperBound, dtype=np.float32)
         self.state = None
 

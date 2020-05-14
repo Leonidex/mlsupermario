@@ -1,6 +1,7 @@
 {
     "id":0,
     "length":60,
+    "max_x":1888,
     "level":{
         "objects": {
                 "bush":[

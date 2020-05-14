@@ -1,5 +1,6 @@
 import json
 import pygame
+import numpy as np
 
 from classes.Sprites import Sprites
 from classes.Tile import Tile
@@ -169,3 +170,18 @@ class Level:
         self.entityList.append(
             Koopa(self.screen, self.sprites.spriteCollection, x, y, self)
         )
+
+    def getClosestEntityDistance(self, mario):
+        minDistance = 9999
+        closestEntity = None
+        for entity in self.entityList:
+            dist = entity.rect.x-mario.rect.x + entity.rect.y-mario.rect.y
+            if dist < minDistance:
+                minDistance = dist
+                closestEntity = entity
+        if (closestEntity):
+            return np.sign(closestEntity.rect.x - mario.rect.x)*minDistance
+        else:
+            return minDistance
+
+
