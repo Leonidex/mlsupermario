@@ -3,7 +3,6 @@
 ## Running
 
 * $ pip3 install numpy pygame scipy tensorflow
-* $ pip install pygame scipy tensorflow
 * $ python main.py
 
 ## Dependencies
